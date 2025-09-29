@@ -1,0 +1,133 @@
+
+.App {
+  height: 100vh;
+  background: var(--app-bg);
+}
+
+.theme-toggle {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 50;
+}
+
+.toggle-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: all 0.2s ease;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+
+.toggle-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 14px;
+  color: var(--muted-text);
+  background: var(--bg);
+  position: relative;
+  overflow: hidden;
+}
+
+.loading::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, 
+    rgba(0, 149, 246, 0.1) 0%, 
+    rgba(240, 148, 51, 0.1) 25%, 
+    rgba(220, 39, 67, 0.1) 50%, 
+    rgba(204, 35, 102, 0.1) 75%, 
+    rgba(188, 24, 136, 0.1) 100%);
+  animation: gradientShift 3s ease-in-out infinite;
+}
+
+.loading > * {
+  position: relative;
+  z-index: 1;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 3px solid #f3f3f3;
+  border-top-color: #0095f6;
+  border-right-color: #f09433;
+  border-bottom-color: #dc2743;
+  border-left-color: #bc1888;
+  animation: spin 1s linear infinite, pulse 2s ease-in-out infinite;
+  position: relative;
+}
+
+.spinner::before {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, #0095f6, #f09433, #dc2743, #bc1888, #0095f6);
+  animation: spin 2s linear infinite reverse;
+  z-index: -1;
+  filter: blur(4px);
+  opacity: 0.3;
+}
+
+.loading span {
+  animation: fadeInOut 2s ease-in-out infinite;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+@keyframes gradientShift {
+  0%, 100% {
+    transform: translateX(-100%) rotate(0deg);
+  }
+  50% {
+    transform: translateX(100%) rotate(180deg);
+  }
+}
+
+@keyframes fadeInOut {
+  0%, 100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
