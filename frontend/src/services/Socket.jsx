@@ -12,7 +12,7 @@ class SocketService
       return this.socket;
     }
     console.log('🟡 [FRONTEND] Connecting to socket...');
-    this.socket = io('http://localhost:4000', {
+    this.socket = io('https://klat-it-backend.onrender.com', {
       transports: ['websocket', 'polling'],
       withCredentials: true,
       auth: {
