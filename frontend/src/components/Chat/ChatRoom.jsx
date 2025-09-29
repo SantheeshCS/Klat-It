@@ -105,7 +105,7 @@ const ChatRoom = () => {
   const loadMessages = async (room) => {
     try {
       console.log('🟡 [ChatRoom] Loading messages for room:', room);
-      const response = await fetch(`http://localhost:4000/api/messages/${room}`);
+      const response = await fetch(`https://klat-it-backend.onrender.com/${room}`);
       if (response.ok) {
         const messagesData = await response.json();
         console.log('✅ [ChatRoom] Messages loaded:', messagesData.length);
